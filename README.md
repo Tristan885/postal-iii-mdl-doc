@@ -10,42 +10,77 @@ Things that were added in Postal III are marked in bold as **(Added in Postal II
 	- [Flags](#flags)
 		- [Model flags](#model-flags)
 		- [Bone flags](#bone-flags)
+		- [Studio flags](#studio-flags)
 		- [Motion flags](#motion-flags)
 		- [Sequence flags](#sequence-flags)
 		- [Autolayer flags](#autolayer-flags)
+		- [Jigglebone flags](#jigglebone-flags)
 	- [Structs](#structs)
+		- [`mstudiojigglebone_t`](#mstudiojigglebone_t)
+		- [`mstudioaimatbone_t`](#mstudioaimatbone_t)
 		- [`mstudiobone_t`](#mstudiobone_t)
+		- [`mstudiolinearbone_t`](#mstudiolinearbone_t)
+		- [`mstudioboneflexdrivercontrol_t`](#mstudioboneflexdrivercontrol_t)
+		- [`mstudioboneflexdriver_t`](#mstudioboneflexdriver_t)
 		- [`mstudiobonecontroller_t`](#mstudiobonecontroller_t)
-		- [`mstudiohitboxset_t`](#mstudiohitboxset_t)
-		- [`mstudioanimdesc_t`](#mstudioanimdesc_t)
-		- [`mstudioseqdesc_t`](#mstudioseqdesc_t)
-		- [`mstudiotexture_t`](#mstudiotexture_t)
-		- [`mstudiobodyparts_t`](#mstudiobodyparts_t)
+		- [`mstudiobbox_t`](#mstudiobbox_t)
+		- [`mstudiomodelgroup_t`](#mstudiomodelgroup_t)
+		- [`mstudiomodelgrouplookup_t`](#mstudiomodelgrouplookup_t)
+		- [`mstudioevent_t`](#mstudioevent_t)
 		- [`mstudioattachment_t`](#mstudioattachment_t)
+		- [`mstudioikerror_t`](#mstudioikerror_t)
+		- [`mstudiocompressedikerror_t`](#mstudiocompressedikerror_t)
+		- [`mstudioikrule_t`](#mstudioikrule_t)
+		- [`mstudioiklock_t`](#mstudioiklock_t)
+		- [`mstudiolocalhierarchy_t`](#mstudiolocalhierarchy_t)
+		- [`mstudioanimvalue_t`](#mstudioanimvalue_t)
+		- [`mstudioanim_valueptr_t`](#mstudioanim_valueptr_t)
+		- [`mstudioanim_t`](#mstudioanim_t)
+		- [`mstudiomovement_t`](#mstudiomovement_t)
+		- [`mstudioanimblock_t`](#mstudioanimblock_t)
+		- [`mstudioanimsections_t`](#mstudioanimsections_t)
+		- [`mstudioanimdesc_t`](#mstudioanimdesc_t)
+		- [`mstudioautolayer_t`](#mstudioautolayer_t)
+		- [`mstudioseqdesc_t`](#mstudioseqdesc_t)
+		- [`mstudioposeparamdesc_t`](#mstudioposeparamdesc_t)
 		- [`mstudioflexdesc_t`](#mstudioflexdesc_t)
 		- [`mstudioflexcontroller_t`](#mstudioflexcontroller_t)
-		- [`mstudioflexrule_t`](#mstudioflexrule_t)
-		- [`mstudioikchain_t`](#mstudioikchain_t)
-		- [`mstudiomouth_t`](#mstudiomouth_t)
-		- [`mstudioposeparamdesc_t`](#mstudioposeparamdesc_t)
-		- [`mstudioiklock_t`](#mstudioiklock_t)
-		- [`mstudiomodelgroup_t`](#mstudiomodelgroup_t)
-		- [`mstudioanimblock_t`](#mstudioanimblock_t)
 		- [`mstudioflexcontrollerui_t`](#mstudioflexcontrollerui_t)
-		- [`mstudiolinearbone_t`](#mstudiolinearbone_t)
-		- [`mstudioikrule_t`](#mstudioikrule_t)
-		- [`mstudiocompressedikerror_t`](#mstudiocompressedikerror_t)
-		- [`mstudioikerror_t`](#mstudioikerror_t)
-		- [`mstudioanimvalue_t`](#mstudioanimvalue_t)
-		- [`mstudioanim_t`](#mstudioanim_t)
-		- [`mstudiomodel_t`](#mstudiomodel_t)
-		- [`mstudiomesh_t`](#mstudiomesh_t)
+		- [`mstudiovertanim_t`](#mstudiovertanim_t)
+		- [`mstudiovertanim_wrinkle_t`](#mstudiovertanim_wrinkle_t)
+		- [`mstudioflex_t`](#mstudioflex_t)
+		- [`mstudioflexop_t`](#mstudioflexop_t)
+		- [`mstudioflexrule_t`](#mstudioflexrule_t)
+		- [`mstudioboneweight_t`](#mstudioboneweight_t)
+		- [`mstudiovertex_t`](#mstudiovertex_t)
+		- [`mstudiotexture_t`](#mstudiotexture_t)
+		- [`mstudioeyeball_t`](#mstudioeyeball_t)
+		- [`mstudioiklink_t`](#mstudioiklink_t)
+		- [`mstudioikchain_t`](#mstudioikchain_t)
+		- [`mstudioiface_t`](#mstudioiface_t)
 		- [`mstudio_modelvertexdata_t`](#mstudio_modelvertexdata_t)
 		- [`mstudio_meshvertexdata_t`](#mstudio_meshvertexdata_t)
-		- [`mstudiovertex_t`](#mstudiovertex_t)
-		- [`mstudioboneweight_t`](#mstudioboneweight_t)
+		- [`mstudiomesh_t`](#mstudiomesh_t)
+		- [`mstudiomodel_t`](#mstudiomodel_t)
+		- [`studiomeshgroup_t`](#studiomeshgroup_t)
+		- [`studiomeshdata_t`](#studiomeshdata_t)
+		- [`studioloddata_t`](#studioloddata_t)
+		- [`studiohwdata_t`](#studiohwdata_t)
+		- [`mstudiobodyparts_t`](#mstudiobodyparts_t)
+		- [`mstudiomouth_t`](#mstudiomouth_t)
+		- [`mstudiohitboxset_t`](#mstudiohitboxset_t)
+		- [`mstudiosrcbonetransform_t`](#mstudiosrcbonetransform_t)
 		- [`mstudiobolton_t` **(Added in Postal III)**](#mstudiobolton_t-added-in-postal-iii)
 		- [`mstudioprefab_t` **(Added in Postal III)**](#mstudioprefab_t-added-in-postal-iii)
+		- [`virtualsequence_t`](#virtualsequence_t)
+		- [`virtualgeneric_t`](#virtualgeneric_t)
+		- [`virtualmodel_t`](#virtualmodel_t)
+		- [`thinModelVertices_t`](#thinmodelvertices_t)
+		- [`vertexFileHeader_t`](#vertexfileheader_t)
+		- [`vertexFileFixup_t`](#vertexfilefixup_t)
+		- [`flexweight_t`](#flexweight_t)
+		- [`flexsetting_t`](#flexsetting_t)
+		- [`flexsettinghdr_t`](#flexsettinghdr_t)
 		- [`sortedmeshvertex_t` **(Added in Postal III)**](#sortedmeshvertex_t-added-in-postal-iii)
 		- [`sortedmesh_t` **(Added in Postal III)**](#sortedmesh_t-added-in-postal-iii)
 	- [QC commands](#qc-commands)
@@ -61,7 +96,7 @@ Things that were added in Postal III are marked in bold as **(Added in Postal II
 		- [$sortedmesh](#sortedmesh)
 		- [$helperbone](#helperbone)
 
-Some of these informations of the Source Engine MDL were taken from [here](https://developer.valvesoftware.com/wiki/MDL_(Source)), with additions of Postal III's extra data.
+Some of these informations of the Source Engine MDL were taken from [here](https://developer.valvesoftware.com/wiki/MDL_(Source)) and other sources, with additions of Postal III's extra data.
 
 ## Data types
 A list of data types used in the MDL data.
@@ -75,6 +110,7 @@ A list of data types used in the MDL data.
 | unsigned char | A single byte unsigned character. (0 to 255) |
 | byte | A single byte that can be a value from `0x00` to `0xFF`. (0 to 255) |
 | short | 2 bytes representing a short (16-bit) integer number. (-32768 to 32767)
+| unsigned short | 2 bytes representing an unsigned short (16-bit) integer number. (0 to 65535)
 | Vector | Consists of 3 (4 bytes) float-values (X, Y, Z) coordinates, making it 12 bytes. |
 | Vector2D | Consists of 2 (4 bytes) float-values (X, Y) coordinates, making it 8 bytes. |
 | Vector4D | Consists of 4 (4 bytes) float-values (X, Y, Z, W) coordinates, making it 16 bytes. |
@@ -86,26 +122,6 @@ A list of data types used in the MDL data.
 
 * Limit for `MAXSTUDIOSKINS` was increased from 32 to 256, allowing models to have 256 total textures.
 * Limit for `MAXSTUDIOANIMS` for studiomdl was increased from 2000 to 3000. Surprisingly, this is still not enough to recompile Postal Dude's whole set of animations as it contains more than 3000 animations (about 3085 SMD animation files when decompiling the animation file using [Crowbar](https://developer.valvesoftware.com/wiki/Crowbar)), but the game can load it just fine. It is unknown on how the developers managed to get it compiled despite that defined limit.
-* As part of the defined `STUDIO_ANIM_*` definitions, Postal III adds `STUDIO_ANIM_QUATROT	0x40 (64)` (Rotation animation is stored in quaternions, not angles)
-* Just like above, they also added `STUDIO_ANIM_QUATROT_WIDTH` as shown in the code block below. (Comments that were in russian were roughly translated with [DeepL](https://www.deepl.com/en/translator) to english.)
-```C++
-#define STUDIO_ANIM_RAWPOS	0x01 // Vector48
-#define STUDIO_ANIM_RAWROT	0x02 // Quaternion48
-#define STUDIO_ANIM_ANIMPOS	0x04 // mstudioanim_valueptr_t
-#define STUDIO_ANIM_ANIMROT	0x08 // mstudioanim_valueptr_t
-#define STUDIO_ANIM_DELTA	0x10
-#define STUDIO_ANIM_RAWROT2	0x20 // Quaternion64
-#ifdef POSTAL3
-#define STUDIO_ANIM_QUATROT	0x40 // Rotation animation is stored in quaternions, not angles
-#endif
-
-#ifdef POSTAL3
-// Quaternion for turn animation. 32 bits is sometimes not enough
-typedef Quaternion32 mstudioquat_t;
-// How much mstudioanimvalue_t fits in mstudioquat_t
-#define STUDIO_ANIM_QUATROT_WIDTH (sizeof(mstudioquat_t)/sizeof(mstudioanimvalue_t))
-#endif
-```
 
 ## Header (`studiohdr_t`)
 | Data | Variable | Description |
@@ -256,6 +272,31 @@ typedef Quaternion32 mstudioquat_t;
 | BONE_USED_MASK | 524032 | Most likely same as above flag |
 | BONE_USED_BY_EYES_ATTACHMENT | 524288 | Bone (or child) is used by eyes attachment point (An attachment is attached to this bone) **(Added in Postal III)** |
 
+### Studio flags
+| Flag | Value | Description |
+| ----------- | ----------- | ----------- |
+| STUDIO_CONST | 1 | Get float |
+| STUDIO_FETCH1 | 2 | Get Flexcontroller value |
+| STUDIO_FETCH2 | 3 | Get flex weight |
+| STUDIO_ADD | 4 | Add |
+| STUDIO_SUB | 5 | Substract |
+| STUDIO_MUL | 6 | Multiply |
+| STUDIO_DIV | 7 | Divide |
+| STUDIO_NEG | 8 | Not implemented |
+| STUDIO_EXP | 9 | Not implemented |
+| STUDIO_OPEN | 10 | Only used in token parsing |
+| STUDIO_CLOSE | 11 |
+| STUDIO_COMMA | 12 | Only used in token parsing |
+| STUDIO_MAX | 13 | Maximum |
+| STUDIO_MIN | 14 | Minimum |
+| STUDIO_2WAY_0 | 15 | Fetch a value from a 2 Way slider for the 1st value RemapVal( 0.0, 0.5, 0.0, 1.0 ) |
+| STUDIO_2WAY_1 | 16 | Fetch a value from a 2 Way slider for the 2nd value RemapVal( 0.5, 1.0, 0.0, 1.0 ) |
+| STUDIO_NWAY | 17 | Fetch a value from a 2 Way slider for the 2nd value RemapVal( 0.5, 1.0, 0.0, 1.0 ) |
+| STUDIO_COMBO | 18 | Perform a combo operation (essentially multiply the last N values on the stack) |
+| STUDIO_DOMINATE | 19 | Performs a combination domination operation |
+| STUDIO_DME_LOWER_EYELID | 20 | Lower eyelid |
+| STUDIO_DME_UPPER_EYELID | 21 | Upper eyelid |
+
 ### Motion flags
 | Flag | Value | Description |
 | ----------- | ----------- | ----------- |
@@ -304,7 +345,69 @@ typedef Quaternion32 mstudioquat_t;
 | STUDIO_AL_LOCAL | 4096 | Layer is a local context sequence |
 | STUDIO_AL_POSE | 16384 | Layer blends using a pose parameter instead of parent cycle |
 
+### Jigglebone flags
+| Flag | Value | Description |
+| ----------- | ----------- | ----------- |
+| JIGGLE_IS_FLEXIBLE | 1 | Is flexible |
+| JIGGLE_IS_RIGID | 2 | Is rigid |
+| JIGGLE_HAS_YAW_CONSTRAINT | 4 | Has yaw constraint |
+| JIGGLE_HAS_PITCH_CONSTRAINT | 8 | Has pitch constraint |
+| JIGGLE_HAS_ANGLE_CONSTRAINT | 16 | Has angle constraint |
+| JIGGLE_HAS_LENGTH_CONSTRAINT | 32 | Has length constraint |
+| JIGGLE_HAS_BASE_SPRING | 64 | Has base spring |
+| JIGGLE_IS_BOING | 128 | Simple squash and stretch sinusoid "boing" |
+
 ## Structs
+
+### `mstudiojigglebone_t`
+Jigglebones
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | flags | Flags |
+| float | length | How from from bone base, along bone, is tip (General params) |
+| float | tipMass | Mass of the tip |
+| float | yawStiffness | Stiffness of the yaw (Flexible params) |
+| float | yawDamping | Damping of the yaw |
+| float | pitchStiffness | Stiffness of the pitch |
+| float | pitchDamping | Damping of the pitch |
+| float | alongStiffness | Stiffness along the bone
+| float | alongDamping | Damping along the bone
+| float | angleLimit | Maximum deflection of tip in radians (Angle constraint) |
+| float | minYaw | Minimum of the yaw in radians (Yaw constraint) |
+| float | maxYaw | Maximum of the yaw in radians |
+| float | yawFriction | Friction of the yaw |
+| float | yawBounce | Bounce of the yaw |
+| float | minPitch | Minimum of the pitch in radians (Pitch constraint) |
+| float | maxPitch | Maximum of the pitch in radians |
+| float | pitchFriction | Friction of the pitch |
+| float | pitchBounce | Bounce of the pitch |
+| float | baseMass | Mass of the base (Base spring) |
+| float | baseStiffness | Stiffness of the base |
+| float | baseDamping | Damping of the base |
+| float | baseMinLeft | Minimum left of the base |
+| float | baseMaxLeft | Maximum left of the base |
+| float | baseLeftFriction | Left friction of the base |
+| float | baseMinUp | Minimum up of the base |
+| float | baseMaxUp | Maximum up of the base |
+| float | baseUpFriction | Up friction of the base |
+| float | baseMinForward | Minimum forward of the base |
+| float | baseMaxForward | Maximum forward of the base |
+| float | baseForwardFriction | Forward friction of the base |
+| float | boingImpactSpeed | Impact speed of the boing (Boing) |
+| float | boingImpactAngle | Impact angle of the boing |
+| float | boingDampingRate | Damping rate of the boing |
+| float | boingFrequency | Frequency of the boing |
+| float | boingAmplitude | Amplitude of the boing |
+
+### `mstudioaimatbone_t`
+Aim at bone
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | parent | Parent |
+| int | aim | Might be bone or attach |
+| Vector | aimvector | Aim vector |
+| Vector | upvector | Up vector |
+| Vector | basepos | Base position |
 
 ### `mstudiobone_t`
 Bones
@@ -328,6 +431,49 @@ Bones
 | int | contents | See [BSPFlags.h](https://github.com/ValveSoftware/source-sdk-2013/blob/master/sp/src/public/bspflags.h#L17) for the contents flags |
 | int | unused | Remove as appropriate (8 x 4 bytes) |
 
+### `mstudiolinearbone_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | numbones | Number of bones |
+| int | flagsindex | Offset to flags then reads it |
+| int | parentindex | Offset to parent then reads it |
+| int | posindex | Offset to position then reads it |
+| int | quatindex | Offset to quaternion then reads it |
+| int | rotindex | Offset to rotation then reads it |
+| int | posetoboneindex | Offset to "pose to bone" then reads it |
+| int | posscaleindex | Offset to position scale then reads it |
+| int | rotscaleindex | Offset to rotation scale then reads it |
+| int | qalignmentindex | Offset to quaternion alignment then reads it |
+| int | unused | Final padding (6 x 4 bytes) |
+
+### `mstudioboneflexdrivercontrol_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | m_nBoneComponent | Bone component that drives flex. See the enum `StudioBoneFlexComponent_t` in the code block below |
+| int | m_nFlexControllerIndex | Flex controller to drive |
+| float | m_flMin | Min value of bone component mapped to 0 on flex controller |
+| float | m_flMax | Max value of bone component mapped to 1 on flex controller |
+```C++
+//-----------------------------------------------------------------------------
+// The component of the bone used by mstudioboneflexdriver_t
+//-----------------------------------------------------------------------------
+enum StudioBoneFlexComponent_t
+{
+	STUDIO_BONE_FLEX_INVALID = -1,	// Invalid
+	STUDIO_BONE_FLEX_TX = 0,		// Translate X
+	STUDIO_BONE_FLEX_TY = 1,		// Translate Y
+	STUDIO_BONE_FLEX_TZ = 2			// Translate Z
+};
+```
+
+### `mstudioboneflexdriver_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | m_nBoneIndex | Bone to drive flex controller |
+| int | m_nControlCount | Number of flex controllers being driven |
+| int | m_nControlIndex | Index into data where controllers are (relative to this) then reads it |
+| int | unused | Final padding (3 x 4 bytes) |
+
 ### `mstudiobonecontroller_t`
 Bone controllers
 | Data | Variable | Description |
@@ -340,12 +486,204 @@ Bone controllers
 | int | inputfield | 0-3 user set controller, 4 mouth |
 | int | unused | (8 x 4 bytes) |
 
-### `mstudiohitboxset_t`
+### `mstudiobbox_t`
+Intersection boxes
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | bone | Bone |
+| int | group | Intersection group |
+| Vector | bbmin | Bounding box (Minimum) |
+| Vector | bbmax | Bounding box (Maximum) |
+| int | szhitboxnameindex | Offset to the name of the hitbox then reads it. |
+| int | unused | Final padding (8 x 4 bytes) |
+
+### `mstudiomodelgroup_t`
+Demand loaded sequence groups
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | szlabelindex | Offset to textual name then reads it |
+| int | sznameindex | Offset to file name then reads it |
+
+### `mstudiomodelgrouplookup_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | modelgroup |
+| int | indexwithingroup |
+
+### `mstudioevent_t`
+Events
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| float | cycle | Cycle |
+| int | event | Event |
+| int | type | Type of event |
+| char | options | Options (Limit of 64 characters) |
+| int | szeventindex | Offset to event name and reads it |
+
+### `mstudioattachment_t`
+Attachment
 | Data | Variable | Description |
 | ----------- | ----------- | ----------- |
 | int | sznameindex | Offset for null-terminated string then reads it |
-| int | numhitboxes | Number of hitboxes |
-| int | hitboxindex | Offset to first hitbox then reads it |
+| unsigned int | flags | Attachment flags |
+| int | localbone | Local bone |
+| matrix3x4_t | local | Attachment point |
+| float | scale | Scale of the attachment (3 x 4 bytes) **(Added in Postal III)** |
+| int | unused | Final padding (5 x 4 bytes) |
+```
+Attachment flags:
+
+ATTACHMENT_FLAG_WORLD_ALIGN 0x10000
+```
+
+### `mstudioikerror_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| Vector | pos | Position |
+| Quaternion | q | Quaternion |
+
+### `mstudiocompressedikerror_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| float | scale | Scale (6 x 4 bytes) |
+| short | offset | Offset to anim value (of type [mstudioanimvalue_t](#mstudioanimvalue_t)) then reads it (6 x 4 bytes) |
+
+### `mstudioikrule_t`
+**(enum Flags added in Postal III for this struct)**
+```C++
+enum Flags
+{
+	eNone			= 0,
+	eTranslateOnly	= 1<<0
+};
+```
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | index | Index |
+| int | type | Type |
+| int | chain | Chain |
+| int | bone | Bone |
+| int | slot | iktarget slot.  Usually same as chain. |
+| float | height | Height |
+| float | radius | Radius |
+| float | floor | Floor |
+| Vector | pos | Position |
+| Quaternion | q | Quaternion |
+| int | compressedikerrorindex | Offset to compressed IK error (of type [mstudiocompressedikerror_t](#mstudiocompressedikerror_t)) then reads it |
+| int | unused2 | Unused |
+| int | iStart | ??? |
+| int | ikerrorindex | Offset to IK error (of type [mstudioikerror_t](#mstudioikerror_t)) then reads it |
+| float | start | Beginning of influence |
+| float | peak | Start of full influence |
+| float | tail | End of full influence |
+| float | end | End of all influence |
+| float | unused3 | Unused |
+| float | contact | Frame footstep makes ground contact |
+| float | drop | How far down the foot should drop when reaching for IK |
+| float | top | Top of the foot box |
+| int | unused6 | Unused |
+| int | unused7 | Used as flags in Postal 3 (See enum Flags above this table) |
+| int | unused8 | Unused |
+| int | szattachmentindex | Offset to name of world attachment then reads it |
+| int | unused | Final padding (7 x 4 bytes) |
+
+### `mstudioiklock_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | chain | IK lock chain (?) |
+| float | flPosWeight | Weight position (?) |
+| float | flLocalQWeight | Local quaternion weight (?) |
+| int | flags | Flags (?) |
+| int | unused | Final padding (4 x 4 bytes) |
+```C++
+// IK types/flags (?)
+#define IK_SELF 1
+#define IK_WORLD 2
+#define IK_GROUND 3
+#define IK_RELEASE 4
+#define IK_ATTACHMENT 5
+#define IK_UNLATCH 6
+```
+
+### `mstudiolocalhierarchy_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | iBone | Bone being adjusted |
+| int | iNewParent | The bones new parent |
+| float | start | Beginning of influence |
+| float | peak | Start of full influence |
+| float | tail | End of full influence |
+| float | end | End of all influence |
+| int | iStart | First frame |
+| int | localanimindex | Offset to local anim then reads it |
+| int | unused | Final padding (4 x 4 bytes) |
+
+### `mstudioanimvalue_t`
+Animation frames
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| byte | valid | ??? |
+| byte | total | Total animation frames (?) |
+| short | value | ??? |
+
+### `mstudioanim_valueptr_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| short | offset | 3 offsets and reads them (3 x 2 bytes) |
+
+### `mstudioanim_t`
+Per bone per animation DOF and weight pointers
+
+**(Postal III seems to add `STUDIO_ANIM_QUATROT` for flags checking for the pointer "pPosV". See code block below.)**
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| byte | bone | Bone |
+| byte | flags | Weighing options |
+| short | nextoffset | Offset to next one (?) |
+* As part of the defined `STUDIO_ANIM_*` definitions, Postal III adds `STUDIO_ANIM_QUATROT	0x40 (64)` (Rotation animation is stored in quaternions, not angles)
+* Just like above, they also added `STUDIO_ANIM_QUATROT_WIDTH` as shown in the code block below. (Comments that were in russian were roughly translated with [DeepL](https://www.deepl.com/en/translator) to english.)
+```C++
+#define STUDIO_ANIM_RAWPOS	0x01 // Vector48
+#define STUDIO_ANIM_RAWROT	0x02 // Quaternion48
+#define STUDIO_ANIM_ANIMPOS	0x04 // mstudioanim_valueptr_t
+#define STUDIO_ANIM_ANIMROT	0x08 // mstudioanim_valueptr_t
+#define STUDIO_ANIM_DELTA	0x10
+#define STUDIO_ANIM_RAWROT2	0x20 // Quaternion64
+#ifdef POSTAL3
+#define STUDIO_ANIM_QUATROT	0x40 // Rotation animation is stored in quaternions, not angles
+#endif
+
+#ifdef POSTAL3
+// Quaternion for turn animation. 32 bits is sometimes not enough
+typedef Quaternion32 mstudioquat_t;
+// How much mstudioanimvalue_t fits in mstudioquat_t
+#define STUDIO_ANIM_QUATROT_WIDTH (sizeof(mstudioquat_t)/sizeof(mstudioanimvalue_t))
+#endif
+```
+
+### `mstudiomovement_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | endframe | End frame |
+| int | motionflags | [Motion flags](#motion-flags) |
+| float | v0 | Velocity at start of block |
+| float | v1 | Velocity at end of block |
+| float | angle | YAW rotation at end of this blocks movement |
+| Vector | vector | Movement vector relative to this blocks initial angle |
+| Vector | position | Relative to start of animation??? |
+
+### `mstudioanimblock_t`
+Used for piecewise loading of animation data
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | datastart |
+| int | dataend |
+
+### `mstudioanimsections_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | animblock |
+| int | animindex |
 
 ### `mstudioanimdesc_t`
 | Data | Variable | Description |
@@ -371,6 +709,17 @@ Bone controllers
 | short | zeroframecount | Number of spans |
 | int | zeroframeindex | Offset to first zero frame data then reads it |
 | float | zeroframestalltime | Saved during read stalls |
+
+### `mstudioautolayer_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| short | iSequence |
+| short | iPose |
+| int | flags | [Autolayer flags](#autolayer-flags) |
+| float | start | Beginning of influence |
+| float | peak | Start of full influence |
+| float | tail | End of full influence |
+| float | end | End of all influence |
 
 ### `mstudioseqdesc_t`
 Sequence descriptions
@@ -416,42 +765,14 @@ Sequence descriptions
 | int | cycleposeindex | Index of pose parameter to use as cycle index |
 | int | unused | Remove/add as appropriate (grow back to 8 ints on version change!) (7 x 4 bytes) |
 
-### `mstudiotexture_t`
-Skin info
-
-Number of bytes past the beginning of this structure where the first character of the texture name can be found. Struct is 64 bytes long.
+### `mstudioposeparamdesc_t`
 | Data | Variable | Description |
 | ----------- | ----------- | ----------- |
 | int | sznameindex | Offset for null-terminated string then reads it |
-| int | flags | Flags |
-| int | used | Padding? |
-| int | unused1 | Padding. |
-| int | unused | Final padding (10 x 4 bytes) |
-
-### `mstudiobodyparts_t`
-Body part index
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| int | sznameindex | Offset for null-terminated string then reads it |
-| int | nummodels | Number of models |
-| int | base | Base |
-| int | modelindex | Index into models array then reads it |
-
-### `mstudioattachment_t`
-Attachment
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| int | sznameindex | Offset for null-terminated string then reads it |
-| unsigned int | flags | Attachment flags |
-| int | localbone | Local bone |
-| matrix3x4_t | local | Attachment point |
-| float | scale | Scale of the attachment (3 x 4 bytes) **(Added in Postal III)** |
-| int | unused | Final padding (5 x 4 bytes) |
-```
-Attachment flags:
-
-ATTACHMENT_FLAG_WORLD_ALIGN 0x10000
-```
+| int | flags | Flags (????) |
+| float | start | Starting value |
+| float | end | Ending value |
+| float | loop | Looping range, 0 for no looping, 360 for rotations, etc. |
 
 ### `mstudioflexdesc_t`
 | Data | Variable | Description |
@@ -466,60 +787,6 @@ ATTACHMENT_FLAG_WORLD_ALIGN 0x10000
 | int | localToGlobal | Remapped at load time to master list |
 | float | min | Minimum flex controller value |
 | float | max | Maximum flex controller value |
-
-### `mstudioflexrule_t`
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| int | flex | Flex ID (?) |
-| int | numops | Number of operations (?) |
-| int | opindex | Offset to first operation then reads it (?) |
-
-### `mstudioikchain_t`
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| int | sznameindex | Offset for null-terminated string then reads it |
-| int | linktype | Link type |
-| int | numlinks | Number of links |
-| int | linkindex | Offset to first link then reads it |
-
-### `mstudiomouth_t`
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| int | bone | Bone ID (?) |
-| Vector | forward | Position of "forward" (?) |
-| int | flexdesc | Flex description ID (?) |
-
-### `mstudioposeparamdesc_t`
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| int | sznameindex | Offset for null-terminated string then reads it |
-| int | flags | Flags (????) |
-| float | start | Starting value |
-| float | end | Ending value |
-| float | loop | Looping range, 0 for no looping, 360 for rotations, etc. |
-
-### `mstudioiklock_t`
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| int | chain | IK lock chain (?) |
-| float | flPosWeight | Weight position (?) |
-| float | flLocalQWeight | Local quaternion weight (?) |
-| int | flags | Flags (?) |
-| int | unused | Final padding (4 x 4 bytes) |
-
-### `mstudiomodelgroup_t`
-Demand loaded sequence groups
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| int | szlabelindex | Offset to textual name then reads it |
-| int | sznameindex | Offset to file name then reads it |
-
-### `mstudioanimblock_t`
-Used for piecewise loading of animation data
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| int | datastart | Offset to start of animation data (?) |
-| int | dataend | Offset to end of animation data (?) |
 
 ### `mstudioflexcontrollerui_t`
 | Data | Variable | Description |
@@ -552,125 +819,131 @@ enum FlexControllerRemapType_t
 };
 ```
 
-### `mstudiolinearbone_t`
+### `mstudiovertanim_t`
+This is the memory image of vertex anims (16-bit fixed point)
 | Data | Variable | Description |
 | ----------- | ----------- | ----------- |
-| int | numbones | Number of bones |
-| int | flagsindex | Offset to flags then reads it |
-| int | parentindex | Offset to parent then reads it |
-| int | posindex | Offset to position then reads it |
-| int | quatindex | Offset to quaternion then reads it |
-| int | rotindex | Offset to rotation then reads it |
-| int | posetoboneindex | Offset to "pose to bone" then reads it |
-| int | posscaleindex | Offset to position scale then reads it |
-| int | rotscaleindex | Offset to rotation scale then reads it |
-| int | qalignmentindex | Offset to quaternion alignment then reads it |
-| int | unused | Final padding (6 x 4 bytes) |
+| unsigned short | index |
+| byte | speed | 255/max_length_in_flex |
+| byte | side | 255/left_right |
 
-### `mstudioikrule_t`
-**(enum Flags added in Postal III for this struct)**
+### `mstudiovertanim_wrinkle_t`
+This is the memory image of vertex anims (16-bit fixed point)
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| short | wrinkledelta |
+
+### `mstudioflex_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | flexdesc | Input value |
+| float | target0 | Zero |
+| float | target1 | One |
+| float | target2 | One |
+| float | target3 | Zero |
+| int | numverts | Number of vertices |
+| int | vertindex | Offset to first vertex then reads it |
+| int | flexpair | Second flex desc |
+| unsigned char | vertanimtype | See the enum `StudioVertAnimType_t` in code block below |
+| unsigned char | unusedchar | Unused char (3 bytes) |
+| int | unused | Final padding (6 x 4 bytes) |
 ```C++
-enum Flags
+enum StudioVertAnimType_t
 {
-	eNone			= 0,
-	eTranslateOnly	= 1<<0
+	STUDIO_VERT_ANIM_NORMAL = 0,
+	STUDIO_VERT_ANIM_WRINKLE,
 };
 ```
+
+### `mstudioflexop_t`
 | Data | Variable | Description |
 | ----------- | ----------- | ----------- |
-| int | index | Index |
-| int | type | Type |
-| int | chain | Chain |
+| int | op |
+| int | index |
+| float | value |
+
+### `mstudioflexrule_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | flex | Flex ID (?) |
+| int | numops | Number of operations (?) |
+| int | opindex | Offset to first operation then reads it (?) |
+
+### `mstudioboneweight_t`
+16 bytes
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| float | weight | Weight (Size of `MAX_NUM_BONES_PER_VERT` being 3) |
+| char | bone | Bone (Size of `MAX_NUM_BONES_PER_VERT` being 3) |
+| byte | numbones | Number of bones |
+
+### `mstudiovertex_t`
+NOTE: This is exactly 48 bytes
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| mstudioboneweight_t | m_BoneWeights | Bone weights (of type [mstudioboneweight_t](#mstudioboneweight_t)) |
+| Vector | m_vecPosition | Vector position |
+| Vector | m_vecNormal | Vector normal |
+| Vector2D | m_vecTexCoord | 2D vector of texture coordinates |
+
+### `mstudiotexture_t`
+Skin info
+
+Number of bytes past the beginning of this structure where the first character of the texture name can be found. Struct is 64 bytes long.
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | sznameindex | Offset for null-terminated string then reads it |
+| int | flags | Flags |
+| int | used | Padding? |
+| int | unused1 | Padding. |
+| int | unused | Final padding (10 x 4 bytes) |
+
+### `mstudioeyeball_t`
+Eyeball
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | sznameindex | Offset for null-terminated string then reads it |
 | int | bone | Bone |
-| int | slot | iktarget slot.  Usually same as chain. |
-| float | height | Height |
+| Vector | org | Origin position |
+| float | zoffset | Z Offset |
 | float | radius | Radius |
-| float | floor | Floor |
-| Vector | pos | Position |
-| Quaternion | q | Quaternion |
-| int | compressedikerrorindex | Offset to compressed IK error (of type [mstudiocompressedikerror_t](#mstudiocompressedikerror_t)) then reads it |
+| Vector | up | Up position |
+| Vector | forward | Forward position |
+| int | texture | Texture |
+| int | unused1 | Unused |
+| float | iris_scale | Iris scale |
 | int | unused2 | Unused |
-| int | iStart | ??? |
-| int | ikerrorindex | Offset to IK error (of type [mstudioikerror_t](#mstudioikerror_t)) then reads it |
-| float | start | Beginning of influence |
-| float | peak | Start of full influence |
-| float | tail | End of full influence |
-| float | end | End of all influence |
-| float | unused3 | Unused |
-| float | contact | Frame footstep makes ground contact |
-| float | drop | How far down the foot should drop when reaching for IK |
-| float | top | Top of the foot box |
-| int | unused6 | Unused |
-| int | unused7 | Used as flags in Postal 3 (See enum Flags above this table) |
-| int | unused8 | Unused |
-| int | szattachmentindex | Offset to name of world attachment then reads it |
-| int | unused | Final padding (7 x 4 bytes) |
+| int | upperflexdesc | Index of raiser, neutral, and lowerer flexdesc that is set by flex controllers |
+| int | lowerflexdesc |
+| float | uppertarget | Angle (radians) of raised, neutral, and lowered lid positions |
+| float | lowertarget |
+| int | upperlidflexdesc | Index of flex desc that actual lid flexes look to |
+| int | lowerlidflexdesc |
+| int | unused | These were used before, so not guaranteed to be 0 (4 x 4 bytes) |
+| bool | m_bNonFACS | Never used before version 44 |
+| char | unused3 | Unused (3 bytes) |
+| int | unused4 | Final padding (7 x 4 bytes) |
 
-### `mstudiocompressedikerror_t`
+### `mstudioiklink_t`
+IK info
 | Data | Variable | Description |
 | ----------- | ----------- | ----------- |
-| float | scale | Scale (6 x 4 bytes) |
-| short | offset | Offset to anim value (of type [mstudioanimvalue_t](#mstudioanimvalue_t)) then reads it (6 x 4 bytes) |
+| int | bone | Bone |
+| Vector | kneeDir | Ideal bending direction (per link, if applicable) |
+| Vector | unused0 | Unused |
 
-### `mstudioikerror_t`
+### `mstudioikchain_t`
 | Data | Variable | Description |
 | ----------- | ----------- | ----------- |
-| Vector | pos | Position |
-| Quaternion | q | Quaternion |
+| int | sznameindex | Offset for null-terminated string then reads it |
+| int | linktype | Link type |
+| int | numlinks | Number of links |
+| int | linkindex | Offset to first link then reads it |
 
-### `mstudioanimvalue_t`
-Animation frames
+### `mstudioiface_t`
 | Data | Variable | Description |
 | ----------- | ----------- | ----------- |
-| byte | valid | ??? |
-| byte | total | Total animation frames (?) |
-| short | value | ??? |
-
-### `mstudioanim_t`
-Per bone per animation DOF and weight pointers
-
-**(Postal III seems to add `STUDIO_ANIM_QUATROT` for flags checking for the pointer "pPosV")**
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| byte | bone | Bone |
-| byte | flags | Weighing options |
-| short | nextoffset | Offset to next one (?) |
-
-### `mstudiomodel_t`
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| char | name | Name of the model. Limit of 64 characters. |
-| int | type | Type of model (?) |
-| float | boundingradius | Bounding radius of the model |
-| int | nummeshes | Number of meshes |
-| int | meshindex | Offset to mesh (of type [mstudiomesh_t](#mstudiomesh_t)) then reads it |
-| int | numvertices | Number of unique vertices/normals/texcoords |
-| int | vertexindex | Offset to vertex Vector then reads it |
-| int | tangentsindex | Offset to tangents Vector then reads it |
-| int | numattachments | Number of attachments |
-| int | attachmentindex | Offset to first attachment then reads it |
-| int | numeyeballs | Number of eyeballs |
-| int | eyeballindex | Offset to first eyeball |
-| mstudio_modelvertexdata_t | vertexdata | Vertex data (of type [mstudio_modelvertexdata_t](#mstudio_modelvertexdata_t)) |
-| unsigned char | eyesdeflection | Eyes deflection (2 bytes) **(Added in Postal III)** |
-| char | unused0 | Unused (2 bytes) **(Added in Postal III)** |
-| int | unused | Final padding (7 x 4 bytes) |
-
-### `mstudiomesh_t`
-| Data | Variable | Description |
-| ----------- | ----------- | ----------- |
-| int | material | Material |
-| int | modelindex | Offset to model (of type [mstudiomodel_t](#mstudiomodel_t)) |
-| int | numvertices | Number of unique vertices/normals/texcoords |
-| int | vertexoffset | Vertex [mstudiovertex_t](#mstudiovertex_t) |
-| int | numflexes | Number of flexes (Vertex animation) |
-| int | flexindex | Offset to first flex then reads it |
-| int | materialtype | Material type |
-| int | materialparam | Material parameters |
-| int | meshid | A unique ordinal for this mesh |
-| Vector | center | Center position of the mesh (?) |
-| mstudio_meshvertexdata_t | vertexdata | Vertex data (of type [mstudio_meshvertexdata_t](#mstudio_meshvertexdata_t)) |
-| int | unused | Final padding (8 x 4 bytes) |
+| unsigned short | a, b, c | Indices to vertices |
 
 ### `mstudio_modelvertexdata_t`
 ```C++
@@ -713,26 +986,129 @@ struct mstudio_meshvertexdata_t
 
 	// used for fixup calcs when culling top level lods
 	// expected number of mesh verts at desired lod
-	int					numLODVertexes[MAX_NUM_LODS];
+	int					numLODVertexes[MAX_NUM_LODS]; // MAX_NUM_LODS = 8
 };
 ```
 
-### `mstudiovertex_t`
-NOTE: This is exactly 48 bytes
+### `mstudiomesh_t`
 | Data | Variable | Description |
 | ----------- | ----------- | ----------- |
-| mstudioboneweight_t | m_BoneWeights | Bone weights (of type [mstudioboneweight_t](#mstudioboneweight_t)) |
-| Vector | m_vecPosition | Vector position |
-| Vector | m_vecNormal | Vector normal |
-| Vector2D | m_vecTexCoord | 2D vector of texture coordinates |
+| int | material | Material |
+| int | modelindex | Offset to model (of type [mstudiomodel_t](#mstudiomodel_t)) |
+| int | numvertices | Number of unique vertices/normals/texcoords |
+| int | vertexoffset | Vertex [mstudiovertex_t](#mstudiovertex_t) |
+| int | numflexes | Number of flexes (Vertex animation) |
+| int | flexindex | Offset to first flex then reads it |
+| int | materialtype | Material type |
+| int | materialparam | Material parameters |
+| int | meshid | A unique ordinal for this mesh |
+| Vector | center | Center position of the mesh (?) |
+| mstudio_meshvertexdata_t | vertexdata | Vertex data (of type [mstudio_meshvertexdata_t](#mstudio_meshvertexdata_t)) |
+| int | unused | Final padding (8 x 4 bytes) |
 
-### `mstudioboneweight_t`
-16 bytes
+### `mstudiomodel_t`
 | Data | Variable | Description |
 | ----------- | ----------- | ----------- |
-| float | weight | Weight (Size of `MAX_NUM_BONES_PER_VERT` being 3) |
-| char | bone | Bone (Size of `MAX_NUM_BONES_PER_VERT` being 3) |
-| byte | numbones | Number of bones |
+| char | name | Name of the model. Limit of 64 characters. |
+| int | type | Type of model (?) |
+| float | boundingradius | Bounding radius of the model |
+| int | nummeshes | Number of meshes |
+| int | meshindex | Offset to mesh (of type [mstudiomesh_t](#mstudiomesh_t)) then reads it |
+| int | numvertices | Number of unique vertices/normals/texcoords |
+| int | vertexindex | Offset to vertex Vector then reads it |
+| int | tangentsindex | Offset to tangents Vector then reads it |
+| int | numattachments | Number of attachments |
+| int | attachmentindex | Offset to first attachment then reads it |
+| int | numeyeballs | Number of eyeballs |
+| int | eyeballindex | Offset to first eyeball |
+| mstudio_modelvertexdata_t | vertexdata | Vertex data (of type [mstudio_modelvertexdata_t](#mstudio_modelvertexdata_t)) |
+| unsigned char | eyesdeflection | Eyes deflection (2 bytes) **(Added in Postal III)** |
+| char | unused0 | Unused (2 bytes) **(Added in Postal III)** |
+| int | unused | Final padding (7 x 4 bytes) |
+
+### `studiomeshgroup_t`
+Runtime stuff
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| IMesh | *m_pMesh |
+| int | m_NumStrips | Number of strips |
+| int | m_Flags | See enum `studiomeshgroupflags_t` in code block below |
+| OptimizedModel::StripHeader_t | *m_pStripData |
+| unsigned short | *m_pGroupIndexToMeshIndex |
+| int | m_NumVertices | Number of vertices |
+| int | *m_pUniqueTris | For performance measurements |
+| unsigned short | *m_pIndices |
+| bool | m_MeshNeedsRestore | If mesh needs restore |
+| short | m_ColorMeshID | Color mesh ID |
+| IMorph | *m_pMorph |
+```C++
+// a group of studio model data
+enum studiomeshgroupflags_t
+{
+	MESHGROUP_IS_FLEXED			= 0x1,
+	MESHGROUP_IS_HWSKINNED		= 0x2,
+	MESHGROUP_IS_DELTA_FLEXED	= 0x4
+};
+```
+
+### `studiomeshdata_t`
+Studio model data
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | m_NumGroup | Number of groups |
+| studiomeshgroup_t* | m_pMeshGroup |
+
+### `studioloddata_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| studiomeshdata_t | *m_pMeshData | There are studiohwdata_t.m_NumStudioMeshes of these. |
+| float | m_SwitchPoint |
+| int | numMaterials | Number of materials (one of these for each lod since we can switch to simpler materials on lower lods.) |
+| IMaterial | **ppMaterials | Will have studiohdr_t.numtextures elements allocated |
+| int | *pMaterialFlags | Will have studiohdr_t.numtextures elements allocated |
+| int | *m_pHWMorphDecalBoneRemap | For decals on hardware morphing, we must actually do hardware skinning. For this to work, we have to hope that the total # of bones used by hw flexed verts is < than the max possible for the dx level we're running under. |
+| int | m_nDecalBoneCount | Decal bone count |
+
+### `studiohwdata_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | m_RootLOD | Calced and clamped, nonzero for lod culling |
+| int | m_NumLODs | Number of LODs |
+| studioloddata_t | *m_pLODs |
+| int | m_NumStudioMeshes | Number of studio meshes |
+
+### `mstudiobodyparts_t`
+Body part index
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | sznameindex | Offset for null-terminated string then reads it |
+| int | nummodels | Number of models |
+| int | base | Base |
+| int | modelindex | Index into models array then reads it |
+
+### `mstudiomouth_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | bone | Bone ID (?) |
+| Vector | forward | Position of "forward" (?) |
+| int | flexdesc | Flex description ID (?) |
+
+### `mstudiohitboxset_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | sznameindex | Offset for null-terminated string then reads it |
+| int | numhitboxes | Number of hitboxes |
+| int | hitboxindex | Offset to first hitbox then reads it |
+
+### `mstudiosrcbonetransform_t`
+Src bone transforms are transformations that will convert .dmx or .smd-based animations into .mdl-based animations.
+
+NOTE: The operation you should apply is: pretransform * bone transform * posttransform
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | sznameindex | Offset for null-terminated string then reads it |
+| matrix3x4_t | pretransform | Pre transform |
+| matrix3x4_t | posttransform | Post transform |
 
 ### `mstudiobolton_t` **(Added in Postal III)**
 | Data | Variable | Description |
@@ -747,6 +1123,261 @@ NOTE: This is exactly 48 bytes
 | int | skin | Skin ID for this prefab |
 | int | boltonsmask | Bolton mask (Bit mask value in power of 2 like flags to support multiple boltons up to 32 in one prefab) |
 | int | bodypartsindex | Offset to values of each bodypart for this prefab then reads them (`numbodyparts` x `byte`) |
+
+### `virtualsequence_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | flags | Flags |
+| int | activity | Activity |
+| int | group | Group |
+| int | index | Offset |
+
+### `virtualgeneric_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | group | Group |
+| int | index | Offset |
+
+### `virtualmodel_t`
+```C++
+struct virtualmodel_t
+{
+	void AppendSequences( int group, const studiohdr_t *pStudioHdr ); 
+	void AppendAnimations( int group, const studiohdr_t *pStudioHdr );
+	void AppendAttachments( int ground, const studiohdr_t *pStudioHdr );
+	void AppendPoseParameters( int group, const studiohdr_t *pStudioHdr );
+	void AppendBonemap( int group, const studiohdr_t *pStudioHdr );
+	void AppendNodes( int group, const studiohdr_t *pStudioHdr );
+	void AppendTransitions( int group, const studiohdr_t *pStudioHdr );
+	void AppendIKLocks( int group, const studiohdr_t *pStudioHdr );
+	void AppendModels( int group, const studiohdr_t *pStudioHdr );
+	void UpdateAutoplaySequences( const studiohdr_t *pStudioHdr );
+
+	virtualgroup_t *pAnimGroup( int animation ) { return &m_group[ m_anim[ animation ].group ]; } // Note: user must manage mutex for this
+	virtualgroup_t *pSeqGroup( int sequence )
+	{
+		// Check for out of range access that is causing crashes on some servers.
+		// Perhaps caused by sourcemod bugs. Typical sequence in these cases is ~292
+		// when the count is 234. Using unsigned math allows for free range
+		// checking against zero.
+		if ( (unsigned)sequence >= (unsigned)m_seq.Count() )
+		{
+			Assert( 0 );
+			return 0;
+		}
+		return &m_group[ m_seq[ sequence ].group ];
+	} // Note: user must manage mutex for this
+
+    CThreadFastMutex m_Lock;
+
+	CUtlVector< virtualsequence_t > m_seq;
+	CUtlVector< virtualgeneric_t > m_anim;
+	CUtlVector< virtualgeneric_t > m_attachment;
+	CUtlVector< virtualgeneric_t > m_pose;
+	CUtlVector< virtualgroup_t > m_group;
+	CUtlVector< virtualgeneric_t > m_node;
+	CUtlVector< virtualgeneric_t > m_iklock;
+	CUtlVector< unsigned short > m_autoplaySequences;
+};
+```
+
+### `thinModelVertices_t`
+'thin' vertex data, used to do model decals (see `Studio_CreateThinVertexes()`)
+```C++
+struct thinModelVertices_t
+{
+	void Init( int numBoneInfluences, Vector *positions, unsigned short *normals, float *boneWeights, char *boneIndices )
+	{
+		Assert( positions != NULL );
+		Assert( normals   != NULL );
+		Assert( ( numBoneInfluences >= 0 ) && ( numBoneInfluences <= 3 ) );
+		Assert( numBoneInfluences > 0 ? !!boneIndices : !boneIndices );
+		Assert( numBoneInfluences > 1 ? !!boneWeights : !boneWeights );
+		m_numBoneInfluences	= numBoneInfluences;
+		m_vecPositions		= positions;
+		m_vecNormals		= normals;
+		m_boneWeights		= boneWeights;
+		m_boneIndices		= boneIndices;
+	}
+
+	void SetPosition( int vertIndex, const Vector & position )
+	{
+		Assert( m_vecPositions );
+		m_vecPositions[ vertIndex ] = position;
+	}
+
+	void SetNormal( int vertIndex, const Vector & normal )
+	{
+		Assert( m_vecNormals );
+		unsigned int packedNormal;
+		PackNormal_UBYTE4( normal.x, normal.y, normal.z, &packedNormal );
+		m_vecNormals[ vertIndex ] = (unsigned short)( 0x0000FFFF & packedNormal );
+	}
+
+	void SetBoneWeights( int vertIndex, const mstudioboneweight_t & boneWeights )
+	{
+		Assert( ( m_numBoneInfluences  >= 1 ) && ( m_numBoneInfluences  <= 3 ) );
+		Assert( ( boneWeights.numbones >= 1 ) && ( boneWeights.numbones <= m_numBoneInfluences ) );
+		int    numStoredWeights = max( 0, ( m_numBoneInfluences - 1 ) );
+		float *pBaseWeight	= m_boneWeights + vertIndex*numStoredWeights;
+		char  *pBaseIndex	= m_boneIndices + vertIndex*m_numBoneInfluences;
+		for ( int i = 0; i < m_numBoneInfluences; i++ )
+		{
+			pBaseIndex[i] = boneWeights.bone[i];
+		}
+		for ( int i = 0; i < numStoredWeights; i++ )
+		{
+			pBaseWeight[i] = boneWeights.weight[i];
+		}
+	}
+
+	void GetMeshPosition( mstudiomesh_t *pMesh, int meshIndex, Vector *pPosition ) const
+	{
+		Assert( pMesh );
+		GetPosition( pMesh->vertexdata.GetGlobalVertexIndex( meshIndex ), pPosition );
+	}
+
+	void GetMeshNormal( mstudiomesh_t *pMesh, int meshIndex, Vector *pNormal ) const
+	{
+		Assert( pMesh );
+		GetNormal( pMesh->vertexdata.GetGlobalVertexIndex( meshIndex ), pNormal );
+	}
+
+	void GetMeshBoneWeights( mstudiomesh_t *pMesh, int meshIndex, mstudioboneweight_t *pBoneWeights ) const
+	{
+		Assert( pMesh );
+		GetBoneWeights( pMesh->vertexdata.GetGlobalVertexIndex( meshIndex ), pBoneWeights );
+	}
+
+	void GetModelPosition( mstudiomodel_t *pModel, int modelIndex, Vector *pPosition ) const
+	{
+		Assert( pModel );
+		GetPosition( pModel->vertexdata.GetGlobalVertexIndex( modelIndex ), pPosition );
+	}
+
+	void GetModelNormal( mstudiomodel_t *pModel, int modelIndex, Vector *pNormal ) const
+	{
+		Assert( pModel );
+		GetNormal( pModel->vertexdata.GetGlobalVertexIndex( modelIndex ), pNormal );
+	}
+
+	void GetModelBoneWeights( mstudiomodel_t *pModel, int modelIndex, mstudioboneweight_t *pBoneWeights ) const
+	{
+		Assert( pModel );
+		GetBoneWeights( pModel->vertexdata.GetGlobalVertexIndex( modelIndex ), pBoneWeights );
+	}
+
+private:
+	void GetPosition( int vertIndex, Vector *pPosition ) const
+	{
+		Assert( pPosition );
+		Assert( m_vecPositions );
+		*pPosition = m_vecPositions[ vertIndex ];
+	}
+
+	void GetNormal( int vertIndex, Vector *pNormal ) const
+	{
+		Assert( pNormal );
+		Assert( m_vecNormals );
+		unsigned int packedNormal = 0x0000FFFF & m_vecNormals[ vertIndex ];
+		UnpackNormal_UBYTE4( &packedNormal, pNormal->Base() );
+	}
+
+	void GetBoneWeights( int vertIndex, mstudioboneweight_t *pBoneWeights ) const
+	{
+		Assert( pBoneWeights );
+		Assert( ( m_numBoneInfluences <= 1 ) || ( m_boneWeights != NULL ) );
+		Assert( ( m_numBoneInfluences <= 0 ) || ( m_boneIndices != NULL ) );
+		int    numStoredWeights = max( 0, ( m_numBoneInfluences - 1 ) );
+		float *pBaseWeight	= m_boneWeights + vertIndex*numStoredWeights;
+		char  *pBaseIndex	= m_boneIndices + vertIndex*m_numBoneInfluences;
+		float  sum			= 0.0f;
+		for (int i = 0;i < MAX_NUM_BONES_PER_VERT;i++)
+		{
+			if ( i < ( m_numBoneInfluences - 1 ) )
+				pBoneWeights->weight[i] = pBaseWeight[i];
+			else
+				pBoneWeights->weight[i] = 1.0f - sum;
+			sum += pBoneWeights->weight[i];
+
+			pBoneWeights->bone[i] = ( i < m_numBoneInfluences ) ? pBaseIndex[i] : 0;
+		}
+
+		// Treat 'zero weights' as '100% binding to bone zero':
+		pBoneWeights->numbones = m_numBoneInfluences ? m_numBoneInfluences : 1;
+	}
+
+	int				m_numBoneInfluences;// Number of bone influences per vertex, N
+	float			*m_boneWeights;		// This array stores (N-1) weights per vertex (unless N is zero)
+	char			*m_boneIndices;		// This array stores N indices per vertex
+	Vector			*m_vecPositions;
+	unsigned short	*m_vecNormals;		// Normals are compressed into 16 bits apiece (see PackNormal_UBYTE4() )
+};
+```
+
+### `vertexFileHeader_t`
+Studio Model Vertex Data File
+
+Position independent flat data for cache manager
+```C++
+// little-endian "IDSV"
+#define MODEL_VERTEX_FILE_ID		(('V'<<24)+('S'<<16)+('D'<<8)+'I')
+#define MODEL_VERTEX_FILE_VERSION	4
+// this id (IDCV) is used once the vertex data has been compressed (see CMDLCache::CreateThinVertexes)
+#define MODEL_VERTEX_FILE_THIN_ID	(('V'<<24)+('C'<<16)+('D'<<8)+'I')
+```
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | id | MODEL_VERTEX_FILE_ID `IDSV` |
+| int | version | MODEL_VERTEX_FILE_VERSION `4` |
+| int | checksum | Same as studiohdr_t, ensures sync |
+| int | numLODs | Number of valid LODs |
+| int | numLODVertexes | Number of vertices for desired root LOD (8 x 4 bytes) |
+| int | numFixups | Number of [vertexFileFixup_t](#vertexFileFixup_t) |
+| int | fixupTableStart | Offset from base to fixup table |
+| int | vertexDataStart | Offset from base to vertex block |
+| int | tangentDataStart | Offset from base to tangent block |
+
+### `vertexFileFixup_t`
+Apply sequentially to lod sorted vertex and tangent pools to re-establish mesh order
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | lod | Used to skip culled root lod |
+| int | sourceVertexID | Absolute index from start of vertex/tangent blocks |
+| int | numVertexes | Number of vertexes |
+
+### `flexweight_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | key |
+| float | weight |
+| float | influence |
+
+### `flexsetting_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | nameindex | Offset for null-terminated string then reads it |
+| int | obsolete1 | Leaving this for legacy support |
+| int | numsettings | Number of flex settings |
+| int | index | Offset to first flex setting |
+| int | obsolete2 | OBSOLETE |
+| int | settingindex | Index of start of contiguous array of [flexweight_t](#flexweight_t) structures |
+
+### `flexsettinghdr_t`
+| Data | Variable | Description |
+| ----------- | ----------- | ----------- |
+| int | id | ID |
+| int | version | Version |
+| char | name | Name (Limit of 64 characters) then reads it |
+| int | length | Length |
+| int | numflexsettings | Number of flex settings |
+| int | flexsettingindex | Offset to first flex setting then reads it |
+| int | nameindex | Offset to name |
+| int | numindexes | Number of indexes (Look up flex settings by "index") |
+| int | indexindex | Offset to first index then reads it |
+| int | numkeys | Number of keys (Index names of "flexcontrollers") |
+| int | keynameindex | Offset to first key name then reads it |
+| int | keymappingindex | Offset to keymapping then reads it |
 
 ### `sortedmeshvertex_t` **(Added in Postal III)**
 | Data | Variable | Description |
