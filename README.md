@@ -1511,8 +1511,6 @@ A prefab consists of a unique prefab name, one or more boltons, a skin ID from t
 
 So far, only the unique bolton was figured out to work for second argument. Unique skin ID and bodygroup model has not been figured out yet with the exception of adding a # at the start of a skin definition inside [$texturegroup](https://developer.valvesoftware.com/wiki/texturegroup) then any name written after it to possibly define a unique name or ID for a skin. See the small example below. **It is an addition from Postal III to $texturegroup QC command.**
 
-The data from this might then be used in `model_templates.txt` file found in `p3\scripts` in both the "PREFABS" and "TEMPLATES" sections in the file.
-
 ```C++
 $texturegroup "skinfamilies"
 {
@@ -1524,6 +1522,8 @@ $texturegroup "skinfamilies"
 First argument expects any sort of unique name for a prefab.
 
 Second argument is a unique ID for a skin, bolton or bodygroup model.
+
+The data from this might then be used in `model_templates.txt` file found in `p3\scripts` in both the "PREFABS" and "TEMPLATES" sections in the file.
 
 Example **(incomplete)**:
 ```C++
