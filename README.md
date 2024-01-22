@@ -1,18 +1,22 @@
 # Source Engine/Postal III MDL
-Documentation on the modified version of the Source Engine MDL model format from the video game [Postal III](https://en.wikipedia.org/wiki/Postal_III) developed by Trashmasters and Running with Scissors and published by Akella.
+Documentation on the modified version of the [Source Engine](https://developer.valvesoftware.com/wiki/Source) MDL model format from the video game [Postal III](https://en.wikipedia.org/wiki/Postal_III) developed by Trashmasters and Running with Scissors and published by Akella.
 
 Things that were added in Postal III are marked in bold as **(Added in Postal III)**.
+
+Titles with * next to them in the table of contents indicate there's Postal III additions in it.
+
+## Table of contents
 - [Source Engine/Postal III MDL](#source-enginepostal-iii-mdl)
 	- [Data types](#data-types)
 	- [Technical informations](#technical-informations)
 	- [Header (`studiohdr_t`)](#header-studiohdr_t)
-	- [Header 2 (`studiohdr2_t`)](#header-2-studiohdr2_t)
+	- [Header 2 (`studiohdr2_t`)](#header-2-studiohdr2_t)*
 	- [Flags](#flags)
-		- [Model flags](#model-flags)
-		- [Bone flags](#bone-flags)
+		- [Model flags](#model-flags)*
+		- [Bone flags](#bone-flags)*
 		- [Studio flags](#studio-flags)
 		- [Motion flags](#motion-flags)
-		- [Sequence flags](#sequence-flags)
+		- [Sequence flags](#sequence-flags)*
 		- [Autolayer flags](#autolayer-flags)
 		- [Jigglebone flags](#jigglebone-flags)
 	- [Structs](#structs)
@@ -27,7 +31,7 @@ Things that were added in Postal III are marked in bold as **(Added in Postal II
 		- [`mstudiomodelgroup_t`](#mstudiomodelgroup_t)
 		- [`mstudiomodelgrouplookup_t`](#mstudiomodelgrouplookup_t)
 		- [`mstudioevent_t`](#mstudioevent_t)
-		- [`mstudioattachment_t`](#mstudioattachment_t)
+		- [`mstudioattachment_t`](#mstudioattachment_t)*
 		- [`mstudioikerror_t`](#mstudioikerror_t)
 		- [`mstudiocompressedikerror_t`](#mstudiocompressedikerror_t)
 		- [`mstudioikrule_t`](#mstudioikrule_t)
@@ -61,7 +65,7 @@ Things that were added in Postal III are marked in bold as **(Added in Postal II
 		- [`mstudio_modelvertexdata_t`](#mstudio_modelvertexdata_t)
 		- [`mstudio_meshvertexdata_t`](#mstudio_meshvertexdata_t)
 		- [`mstudiomesh_t`](#mstudiomesh_t)
-		- [`mstudiomodel_t`](#mstudiomodel_t)
+		- [`mstudiomodel_t`](#mstudiomodel_t)*
 		- [`studiomeshgroup_t`](#studiomeshgroup_t)
 		- [`studiomeshdata_t`](#studiomeshdata_t)
 		- [`studioloddata_t`](#studioloddata_t)
@@ -1493,6 +1497,8 @@ Second argument is the type of bolton from this list: `Hair`, `Glasses`, `Masks`
 
 Third argument is the name of the model (without the .mdl file extension) found in the appropriate folder depending of the bolton type chosen in second argument. See `p3\models\characters\bolt-on` folder to then check the correct folder of the type you're choosing to find the name of the model you want to use.
 
+The data from this might then be used in `model_templates.txt` file found in `p3\scripts` in the "TEMPLATES" section in the file.
+
 Example:
 ```C++
 $bolton "Glasses" "glasses" "Dude_glass_02"
@@ -1504,6 +1510,8 @@ Adds a new prefab to the model, usually for a character model allowing to have m
 A prefab consists of a unique prefab name, one or more boltons, a skin ID from the skin families (defined with [$texturegroup](https://developer.valvesoftware.com/wiki/texturegroup)) and an ID per bodygroup.
 
 So far, only the unique bolton was figured out to work for second argument. Unique skin ID and bodygroup model has not been figured out yet with the exception of adding a # at the start of a skin definition inside [$texturegroup](https://developer.valvesoftware.com/wiki/texturegroup) then any name written after it to possibly define a unique name or ID for a skin. See the small example below. **It is an addition from Postal III to $texturegroup QC command.**
+
+The data from this might then be used in `model_templates.txt` file found in `p3\scripts` in both the "PREFABS" and "TEMPLATES" sections in the file.
 
 ```C++
 $texturegroup "skinfamilies"
@@ -1525,12 +1533,7 @@ $prefab "Dude_raincoat_01" "Glasses"
 ### $cloth
 Adds a cloth mesh. This was most likely used for the PhysX features included in Postal III for cloth physics.
 
-First argument most likely expects the name of a cloth text file or a cloth mesh. See the cloth text files found in `p3\models\cloth` for more informations.
-
-Example **(incomplete)**:
-```C++
-$cloth "advertizing_01"
-```
+First argument most likely expects the name of a cloth text file or a cloth mesh but this is not figured out yet. See the cloth text files found in `p3\models\cloth` for more informations of what this QC command is trying to load.
 
 ### $sortedmesh
 According to the description of the flag [STUDIOHDR_FLAGS_SORT_MESHES_BY_DISTANCE](#flags), this seems to be used for sorting translucent meshes by distance or possibly not necessarily by distance, but something along those lines.
