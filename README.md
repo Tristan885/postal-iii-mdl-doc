@@ -1468,7 +1468,7 @@ You can find more about the known/existing QC commands [here](https://developer.
 This QC command is an addition to the existing QC command [$collisionmodel](https://developer.valvesoftware.com/wiki/collisionmodel). Might be similar to $drag but for rolling?
 
 ### $insertbone
-Inserts a new bone.
+Inserts a new bone. **(This may actually be some remnants of old QC commands Valve used in the past.)**
 
 (Not figured out yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
 
@@ -1484,7 +1484,7 @@ Plate origin (?)
 (Not figured out yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
 
 ### $hboxxform
-Hitbox "xform".
+Hitbox "xform". **(This may actually be some remnants of old QC commands Valve used in the past.)**
 
 (Not figured out what it is yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
 
@@ -1509,13 +1509,22 @@ Adds a new prefab to the model, usually for a character model allowing to have m
 
 A prefab consists of a unique prefab name, one or more boltons, a skin ID from the skin families (defined with [$texturegroup](https://developer.valvesoftware.com/wiki/texturegroup)) and an ID per bodygroup.
 
-So far, only the unique bolton was figured out to work for second argument. Unique skin ID and bodygroup model has not been figured out yet with the exception of adding a # at the start of a skin definition inside [$texturegroup](https://developer.valvesoftware.com/wiki/texturegroup) then any name written after it to possibly define a unique name or ID for a skin. See the small example below. **It is an addition from Postal III to $texturegroup QC command.**
+To define what skin to use for a prefab, you must add an ID for the first string in the second { } in your [$texturegroup](https://developer.valvesoftware.com/wiki/texturegroup) QC command as seen in the small example below. **It is an addition from Postal III to $texturegroup QC command.**
 
 ```C++
 $texturegroup "skinfamilies"
 {
-	{#TheTemplate "template_body" "template_head" }
-	{#TheDude "Postal_Dude_body" "Postal_Dude_head" }
+	{ "#TheTemplate" "template_body" "template_head" }
+	{ "#TheDude" "Postal_Dude_body" "Postal_Dude_head" }
+}
+```
+
+To define what bodygroup to use for a prefab, you must add an ID for the last string after a defined model in your [$bodygroup](https://developer.valvesoftware.com/wiki/$bodygroup) QC command as seen in the small example below. **It is an addition from Postal III to $bodygroup QC command.**
+
+```C++
+$bodygroup "Dude_Hair"
+{
+	studio "Dude_hair.smd" "#DudeHair"
 }
 ```
 
@@ -1525,9 +1534,9 @@ Second argument is a unique ID for a skin, bolton or bodygroup model.
 
 The data from this might then be used in `model_templates.txt` file found in `p3\scripts` in both the "PREFABS" and "TEMPLATES" sections in the file.
 
-Example **(incomplete)**:
+Example:
 ```C++
-$prefab "Dude_raincoat_01" "Glasses"
+$prefab "Dude_raincoat_01" "Glasses" "#TheDude" "#DudeHair"
 ```
 
 ### $cloth
@@ -1541,6 +1550,6 @@ According to the description of the flag [STUDIOHDR_FLAGS_SORT_MESHES_BY_DISTANC
 (Not figured out how it works yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
 
 ### $helperbone
-Helper bone.
+Helper bone. **(This may actually be some remnants of old QC commands Valve used in the past.)**
 
 (Not figured out what it is yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
