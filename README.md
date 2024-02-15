@@ -1507,7 +1507,7 @@ $bolton "Glasses" "glasses" "Dude_glass_02"
 ### $prefab
 Adds a new prefab to the model, usually for a character model allowing to have more than one character, like a base human model. Take `M_Avg` from Postal III for example which has over a hundred of prefabs being a different character per prefab.
 
-A prefab consists of a unique prefab name, one or more boltons, a skin ID from the skin families (defined with [$texturegroup](https://developer.valvesoftware.com/wiki/texturegroup)) and an ID per bodygroup.
+A prefab consists of a unique prefab name, one or more boltons, a skin ID from the skin families (defined in [$texturegroup](https://developer.valvesoftware.com/wiki/texturegroup)) and an ID per bodygroup (defined in [$bodygroup](https://developer.valvesoftware.com/wiki/$bodygroup)). See the small examples below on how to use them.
 
 To define what skin to use for a prefab, you must add an ID for the first string in the second { } in your [$texturegroup](https://developer.valvesoftware.com/wiki/texturegroup) QC command as seen in the small example below. **It is an addition from Postal III to $texturegroup QC command.**
 
