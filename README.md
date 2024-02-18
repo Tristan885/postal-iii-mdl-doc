@@ -1470,7 +1470,7 @@ For this already existing QC command, they made some changes to allow putting op
 
 From the usual format to write `studio "my_mesh.smd"`, you can also add a second argument which will represent an ID to use with [$prefab](#prefab).
 
-These changes to the QC command was mainly used for character models having multiple head meshes with flexes such as the M_Avg character model.
+These changes to the QC command was mainly used for character models having multiple meshes with flexes such as the M_Avg character model's head meshes.
 ```C++
 $bodygroup "M_Avg_Heads"
 {
