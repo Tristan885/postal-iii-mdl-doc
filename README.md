@@ -88,6 +88,7 @@ Titles with * next to them in the table of contents indicate there's Postal III 
 		- [`sortedmeshvertex_t` **(Added in Postal III)**](#sortedmeshvertex_t-added-in-postal-iii)
 		- [`sortedmesh_t` **(Added in Postal III)**](#sortedmesh_t-added-in-postal-iii)
 	- [QC commands](#qc-commands)
+		- [$bodygroup](#bodygroup)
 		- [$rollingDrag](#rollingdrag)
 		- [$insertbone](#insertbone)
 		- [$plates](#plates)
@@ -1462,7 +1463,108 @@ struct sortedmesh_t
 ```
 
 ## QC commands
-You can find more about the known/existing QC commands [here](https://developer.valvesoftware.com/wiki/Category:QC_Commands). All other commands below will only be the new ones **added in Postal III**.
+You can find more about the known/existing QC commands [here](https://developer.valvesoftware.com/wiki/Category:QC_Commands). All other commands below will mostly be the new ones **added in Postal III** and few others documented due to some changes the developers did.
+
+### $bodygroup
+For this already existing QC command, they made some changes to allow putting options from [$model](https://developer.valvesoftware.com/wiki/model_(QC)) to work for a bodygroup mesh as shown below.
+
+From the usual format to write `studio "my_mesh.smd"`, you can also add a second argument which will represent an ID to use with [$prefab](#prefab).
+
+These changes to the QC command was mainly used for character models having multiple head meshes with flexes such as the M_Avg character model.
+```C++
+$bodygroup "M_Avg_Heads"
+{
+	studio "m_avg_head_02_L0.smd" "#m_avg_head_02_L0" {
+		eyeball "eye_0" "bip_head" -1.472500 65.217503 3.229999 "eyeball_r" 1.9 0 "iris_unused" 0.665
+		eyeball "eye_1" "bip_head" 1.472500 65.217503 3.229999 "eyeball_l" 1.9 0 "iris_unused" 0.665
+
+		flexfile "M_Avg_02.vta" 
+		{
+			defaultflex frame 0
+			flex "T" frame 1
+			flex "V" frame 2
+			flex "ReyeClose" frame 3
+			flex "LeyeClose" frame 4
+			flex "M" frame 5
+			flex "U" frame 6
+			flex "smileHi" frame 7
+			flex "angryHi" frame 8
+			flex "angry" frame 9
+			flex "smile" frame 10
+			flex "mouthOpen" frame 11
+			flex "T7" frame 12
+		}
+
+		flexcontroller T range 0 1 "T"
+		flexcontroller V range 0 1 "V"
+		flexcontroller ReyeClose range 0 1 "ReyeClose"
+		flexcontroller LeyeClose range 0 1 "LeyeClose"
+		flexcontroller M range 0 1 "M"
+		flexcontroller U range 0 1 "U"
+		flexcontroller smileHi range 0 1 "smileHi"
+		flexcontroller angryHi range 0 1 "angryHi"
+		flexcontroller angry range 0 1 "angry"
+		flexcontroller smile range 0 1 "smile"
+		flexcontroller mouthOpen range 0 1 "mouthOpen"
+		flexcontroller range range 0 1 "0"
+		flexcontroller range range 0 1 "1"
+		flexcontroller range range 0 1 "blink"
+		flexcontroller eyes range -45 45 "eyes_updown"
+		flexcontroller eyes range -45 45 "eyes_rightleft"
+		flexcontroller head range -30 30 "head_rightleft"
+		flexcontroller head range -15 15 "head_updown"
+		flexcontroller head range -15 15 "head_tilt"
+		flexcontroller body range -30 30 "body_rightleft"
+		flexcontroller chest range -30 30 "chest_rightleft"
+		flexcontroller head range -0.2 0.2 "head_forwardback"
+		flexcontroller T7 range 0 1 "T7"
+
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%mouth = 0.2 + mouthOpen + 0.3 * smile + 0.8 * angry + 0.3 * T
+		%ReyeClose = ReyeClose + blink
+		%LeyeClose = LeyeClose + blink
+		%T = T
+		%V = V
+		%M = M
+		%U = U
+		%smileHi = smileHi
+		%angryHi = angryHi
+		%angry = angry
+		%smile = smile
+		%mouthOpen = mouthOpen
+		%T7 = T7
+	}
+}
+```
 
 ### $rollingDrag
 This QC command is an addition to the existing QC command [$collisionmodel](https://developer.valvesoftware.com/wiki/collisionmodel). Might be similar to $drag but for rolling?
