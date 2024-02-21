@@ -1118,7 +1118,7 @@ NOTE: The operation you should apply is: pretransform * bone transform * posttra
 ### `mstudiobolton_t` **(Added in Postal III)**
 | Data | Variable | Description |
 | ----------- | ----------- | ----------- |
-| int | type | Bolton type (Hair, Glasses, Masks, Bracelet1, Bracelet2, Earring1, Earring2, Ring1, Ring2, Pin1, Pin2) |
+| int | type | Bolton type (Hair, Glasses, Masks, Bracelet1, Bracelet2, Earring1, Earring2, Hat, Ring1, Ring2, Pin1, Pin2) |
 | int | szmodelnameindex | Offset to bolton model name then reads it |
 
 ### `mstudioprefab_t` **(Added in Postal III)**
