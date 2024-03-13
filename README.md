@@ -89,7 +89,6 @@ Titles with * next to them in the table of contents indicate there's Postal III 
 		- [`sortedmesh_t` **(Added in Postal III)**](#sortedmesh_t-added-in-postal-iii)
 	- [QC commands](#qc-commands)
 		- [$bodygroup](#bodygroup)
-		- [$rollingDrag](#rollingdrag)
 		- [$insertbone](#insertbone)
 		- [$plates](#plates)
 		- [$sortplates](#sortplates)
@@ -99,7 +98,6 @@ Titles with * next to them in the table of contents indicate there's Postal III 
 		- [$prefab](#prefab)
 		- [$cloth](#cloth)
 		- [$sortedmesh](#sortedmesh)
-		- [$helperbone](#helperbone)
 
 Some of these informations of the Source Engine MDL were taken from [here](https://developer.valvesoftware.com/wiki/MDL_(Source)) and other sources, with additions of Postal III's extra data.
 
@@ -1566,9 +1564,6 @@ $bodygroup "M_Avg_Heads"
 }
 ```
 
-### $rollingDrag
-This QC command is an addition to the existing QC command [$collisionmodel](https://developer.valvesoftware.com/wiki/collisionmodel). Might be similar to $drag but for rolling?
-
 ### $insertbone
 Inserts a new bone. **(This may actually be some remnants of old QC commands Valve used in the past.)**
 
@@ -1650,8 +1645,3 @@ First argument most likely expects the name of a cloth text file or a cloth mesh
 According to the description of the flag [STUDIOHDR_FLAGS_SORT_MESHES_BY_DISTANCE](#flags), this seems to be used for sorting translucent meshes by distance or possibly not necessarily by distance, but something along those lines.
 
 (Not figured out how it works yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
-
-### $helperbone
-Helper bone. **(This may actually be some remnants of old QC commands Valve used in the past.)**
-
-(Not figured out what it is yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
