@@ -1586,23 +1586,27 @@ Hitbox "xform". **(This may actually be some remnants of old QC commands Valve u
 (Not figured out what it is yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
 
 ### $bolton
-Adds a new bolton to the model, typically for a character model supporting getting accessories with attachment bones.
+Adds a new bolton to the model, typically for a character model supporting getting accessories with attachment bones. This can also work for any models, not exclusively just to character models.
 
 First argument expects any sort of unique name for a bolton.
 
 Second argument is the type of bolton from this list: `Hair`, `Glasses`, `Masks`, `Bracelet1`, `Bracelet2`, `Earring1`, `Earring2`, `Ring1`, `Ring2`, `Pin1`, `Pin2`
 
 Third argument is the name of the model (without the .mdl file extension) found in the appropriate folder depending of the bolton type chosen in second argument. See `p3\models\characters\bolt-on` folder to then check the correct folder of the type you're choosing to find the name of the model you want to use.
+You can also pass a name defined from the `p3_plants.txt` script file (located in `p3\scripts`) for "hair" found in the "Plants" section in that script file. The name must start with the `&` symbol, like `"&haircurl_01"`. See example below.
 
 The data from this might then be used in `model_templates.txt` file found in `p3\scripts` in the "TEMPLATES" section in the file.
 
 Example:
 ```C++
 $bolton "Glasses" "glasses" "Dude_glass_02"
+
+// This one will apply black hair on a hair mesh defined in "haircurl_01" from p3_plants.txt under the "Plants" section, to the model's hair attachment bone.
+$bolton "Hair" "hair" "&haircurl_01"
 ```
 
 ### $prefab
-Adds a new prefab to the model, usually for a character model allowing to have more than one character, like a base human model. Take `M_Avg` from Postal III for example which has over a hundred of prefabs being a different character per prefab.
+Adds a new prefab to the model, usually for a character model allowing to have more than one character, like a base human model. Take `M_Avg` from Postal III for example which has over a hundred of prefabs being a different character per prefab. This can also work for any models, not exclusively just to character models.
 
 A prefab consists of a unique prefab name, one or more boltons, a skin ID from the skin families (defined in [$texturegroup](https://developer.valvesoftware.com/wiki/texturegroup)) and an ID per bodygroup (defined in [$bodygroup](https://developer.valvesoftware.com/wiki/$bodygroup)). See the small examples below on how to use them.
 
