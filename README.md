@@ -1593,6 +1593,7 @@ First argument expects any sort of unique name for a bolton.
 Second argument is the type of bolton from this list: `Hair`, `Glasses`, `Masks`, `Bracelet1`, `Bracelet2`, `Earring1`, `Earring2`, `Ring1`, `Ring2`, `Pin1`, `Pin2`
 
 Third argument is the name of the model (without the .mdl file extension) found in the appropriate folder depending of the bolton type chosen in second argument. See `p3\models\characters\bolt-on` folder to then check the correct folder of the type you're choosing to find the name of the model you want to use.
+
 You can also pass a name defined from the `p3_plants.txt` script file (located in `p3\scripts`) for "hair" found in the "Plants" section in that script file. The name must start with the `&` symbol, like `"&haircurl_01"`. See example below.
 
 The data from this might then be used in `model_templates.txt` file found in `p3\scripts` in the "TEMPLATES" section in the file.
