@@ -34,7 +34,7 @@ Titles with * next to them in the table of contents indicate there's Postal III 
 		- [`mstudioattachment_t`](#mstudioattachment_t)*
 		- [`mstudioikerror_t`](#mstudioikerror_t)
 		- [`mstudiocompressedikerror_t`](#mstudiocompressedikerror_t)
-		- [`mstudioikrule_t`](#mstudioikrule_t)
+		- [`mstudioikrule_t`](#mstudioikrule_t)*
 		- [`mstudioiklock_t`](#mstudioiklock_t)
 		- [`mstudiolocalhierarchy_t`](#mstudiolocalhierarchy_t)
 		- [`mstudioanimvalue_t`](#mstudioanimvalue_t)
