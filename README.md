@@ -89,7 +89,6 @@ Titles with * next to them in the table of contents indicate there's Postal III 
 		- [`sortedmesh_t` **(Added in Postal III)**](#sortedmesh_t-added-in-postal-iii)
 	- [QC commands](#qc-commands)
 		- [$bodygroup](#bodygroup)
-		- [$insertbone](#insertbone)
 		- [$plates](#plates)
 		- [$sortplates](#sortplates)
 		- [$plateorigin](#plateorigin)
@@ -1395,7 +1394,7 @@ Apply sequentially to lod sorted vertex and tangent pools to re-establish mesh o
 | ----------- | ----------- | ----------- |
 | int | numvertices | Number of vertices |
 | int | numfaces | Number of faces |
-| int | verticesoffset | Offset to vertices |
+| int | verticesoffset | Offset to vertices, always 108 |
 | int | facesoffset | Offset to faces |
 | int | facecentersoffset | Offset to face centers |
 | char | material | Material name. Limit of 64 characters. |
@@ -1564,26 +1563,29 @@ $bodygroup "M_Avg_Heads"
 }
 ```
 
-### $insertbone
-Inserts a new bone. **(This may actually be some remnants of old QC commands Valve used in the past.)**
-
-(Not figured out yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
-
 ### $plates
-Seems to be related with materials. Currently unknown on what it does.
+It assigns a bone index to a material being loaded if the bone is not parented. After vertices and faces are built, mesh indices are sorted using the assigned bone's name - if they do match it falls back to material index comparison.
+Prints out "PLATES PRIORITY" after sorting the mesh indices where elements of it is local bone's name.
 
 ### $sortplates
-Possibly used for "sorting plates" order from the QC command above. Currently unknown on what it exactly does.
+Possibly used for sorting plate origins' order of the QC command below.
+(Currently unknown on what it exactly does.)
 
 ### $plateorigin
-Plate origin (?)
-
-(Not figured out yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
+Takes 4 arguments - most likely *\<plate_name\> \<x\> \<y\> \<z\>*, seems to only work when alongside **$sortplates**, used within WriteModel function. Uses a CUtlMap to keep track of the origins.
+(Not fully figured out yet.)
 
 ### $hboxxform
-Hitbox "xform". **(This may actually be some remnants of old QC commands Valve used in the past.)**
+Transforms select hitbox's bone position and scale. **(This may actually be some remnants of old QC commands Valve used in the past.)**
 
-(Not figured out what it is yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
+Takes 7 arguments, format is as follows:
+**$hboxxform** *<bone_name> <offset_z> <offset_y> <offset_x> <scale_z> <scale_y> <scale_x>*
+
+Example:
+```C++
+$hboxxform "Bip01_Head1" 0.0 0.0 0.0 1.0 1.0 1.0
+```
+
 
 ### $bolton
 Adds a new bolton to the model, typically for a character model supporting getting accessories with attachment bones. This can also work for any models, not exclusively just to character models.
@@ -1642,11 +1644,85 @@ $prefab "Dude_raincoat_01" "Glasses" "#TheDude" "#DudeHair"
 ```
 
 ### $cloth
-Adds a cloth mesh. This was most likely used for the PhysX features included in Postal III for cloth physics.
+Creates a text file that defines various cloth mesh properties, the file is used for the softbody calculations within Postal III.
+Logic used to generate .cloth.txt files is pretty basic:
+- *mesh* file gets loaded and used to write the vertices and indices into the cloth file
+- *material* and the contents of *desc* are reformatted and then written into the cloth file
+- *anchor \<name\> \<anchor.smd\>*, the *anchor* file is loaded and vertices are compared to the *mesh* file and if any of those match exactly (no epsilon) - the index gets added onto the list inside of the *anchors* { *name* { \<indices\> } }
 
-First argument most likely expects the name of a cloth text file or a cloth mesh but this is not figured out yet. See the cloth text files found in `p3\models\cloth` for more informations of what this QC command is trying to load.
+Example:
+```C++
+$cloth {
+	mesh "cloth.smd"
+	material "models\cloth\cloth_test"
+
+	desc
+	{
+		bending	1
+		density	0.015
+		thickness 0.2
+	}
+
+	anchor "Anchor01" "cloth_anchor.smd"
+}
+```
+
+Example output:
+```C++
+"cloth/cloth_test.cloth.txt"
+{
+	"material"	"models\cloth\cloth_test"
+	"bending"	1
+	"density"	0.015
+	"thickness"	0.2
+
+	"vertices"
+	{
+		// Format: X Y Z NX NY NZ U V
+		-0.000002 -10.652294 -79.433731 -0.170778 0.985309 0.000000 0.000000 1.000000
+		-9.879383 -12.364633 -61.207035 -0.170778 0.985309 0.000000 0.100000 0.900000
+		-0.000002 -10.652294 -63.546997 -0.170778 0.985309 0.000000 0.000000 0.900000
+		// Total: 3
+	}
+
+	"indices"
+	{
+		// Format: p0 p1 p2   p0 p1 p2 ...
+		0 2 1
+		// Total: 3
+	}
+
+	"anchors"
+	{
+		"Anchor01"
+		{
+			0 2
+			// Total: 2
+		}
+	}
+}
+```
+
+Notes:
+- **\$cloth** has to have its opening bracket on the same line i.e. `$cloth {`.
+- `-1` gets appended at the end of the *anchors*' indices if the total amount of them is not even.
 
 ### $sortedmesh
-According to the description of the flag [STUDIOHDR_FLAGS_SORT_MESHES_BY_DISTANCE](#flags), this seems to be used for sorting translucent meshes by distance or possibly not necessarily by distance, but something along those lines.
+Outputs a sorted mesh file format and adds a flag [STUDIOHDR_FLAGS_SORT_MESHES_BY_DISTANCE](#flags) to the model, this flag is used for sorting translucent meshes by distance - outputted mesh format has precalculated center for each face to improve performance in back-to-front alpha-blend sorting during rendering.
 
-(Not figured out how it works yet, seems to expect some arguments, otherwise it's incomplete if nothing provided.)
+Example:
+```C++
+$sortedmesh "input_file.smd" "output_file.raw" "material"
+```
+
+Compiles two files:
+- `output_file.raw`		: little-endian (PC)
+- `output_file.360.raw`	: big-endian (Xbox 360)
+
+Sorted mesh file format starts with [sortedmesh_t](#sortedmesh_t-added-in-postal-iii) which is the header of the file and based that header:
+- At *verticesoffset* in the file is [sortedmeshvertex_t](#sortedmeshvertex_t-added-in-postal-iii) *numvertices* amount of times.
+- At *facesoffset* in the file is `uint16 a,b,c` *numfaces* amount of times.
+- At *facecentersoffset* in the file is a Vector *numfaces* amount of times.
+
+Notes:
+- Even though `s_face_t` is used within the studiomdl code for the faces which uses `long`, the file format outputs them as `short`.
